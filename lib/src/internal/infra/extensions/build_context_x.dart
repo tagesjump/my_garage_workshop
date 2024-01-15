@@ -11,6 +11,4 @@ extension BuildContextX on BuildContext {
   TextTheme get textTheme => theme.textTheme;
 
   MediaQueryData get data => MediaQuery.of(this);
-
-  NavigatorState get navigator => Navigator.of(this);
 }

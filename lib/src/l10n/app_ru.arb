@@ -16,6 +16,5 @@
   "garageAutoChassisNumberLabel": "Номер шасси",
   "garageAutoVinLabel": "VIN",
   "garageAutoAbsentLabel": "отсутствует",
-  "garageAutoUpdateButton": "Обновить пробег",
-  "garageAuto": ""
+  "garageAutoUpdateButton": "Обновить пробег"
 }
