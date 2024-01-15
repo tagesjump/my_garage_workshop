@@ -1,0 +1,32 @@
+name: flutter-tests
+
+on: [ push ]
+
+jobs:
+  analysis:
+    name: format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.3'
+          channel: 'stable'
+          architecture: x64
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+        with:
+          version: "25.x"
+      - name: Verify formatting
+        run: dart format . --set-exit-if-changed
+      - name: Install dependencies
+        run: |
+          flutter pub get
+          dart pub global activate protoc_plugin
+      - name: Generate code
+        run: |
+          protoc -Iproto proto/*.proto google/protobuf/empty.proto --dart_out=grpc:lib/src/network/infra/proto
+          dart run build_runner build --delete-conflicting-outputs
+      - name: Analyze code
+        run: dart analyze .

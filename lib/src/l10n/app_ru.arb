@@ -1,0 +1,21 @@
+{
+  "appName": "My garage",
+  "garageAppBarTitle": "Главная",
+  "garageMyGarageTitle": "Мой гараж",
+  "garageMyGarageSubtitle": "Добавляйте авто, отслеживайте его состояние и следите за обслуживанием.",
+  "garageMyAutoTitle": "Мои автомобили",
+  "garageAutoName": "{name} ({year} г.в.)",
+  "garageAutoMileage": "{mileage} км",
+  "garageAddAuto": "Добавить авто",
+  "garageAddAppBarTitle": "Добавить авто",
+  "garageAutoAppBarTitle": "Карточка автомобиля",
+  "garageAutoConcatSymbol": "{name}:",
+  "garageAutoAboutTitle": "Данные по автомобилю",
+  "garageAutoMileageLabel": "Пробег",
+  "garageAutoBodyNumberLabel": "Номер кузова",
+  "garageAutoChassisNumberLabel": "Номер шасси",
+  "garageAutoVinLabel": "VIN",
+  "garageAutoAbsentLabel": "отсутствует",
+  "garageAutoUpdateButton": "Обновить пробег",
+  "garageAuto": ""
+}

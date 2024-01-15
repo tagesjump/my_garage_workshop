@@ -1,0 +1,48 @@
+name: my_garage
+description: "My garage."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.4 <4.0.0'
+  flutter: '>=3.16.7 <4.0.0'
+
+dependencies:
+  # D
+  drift: ^2.14.1
+  # E
+  equatable: ^2.0.5
+  # F
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.3
+  flutter_localizations:
+    sdk: flutter
+  # G
+  get_it: ^7.6.6
+  go_router: ^13.0.1
+  # I
+  injectable: ^2.3.2
+  intl: ^0.18.1
+  # P
+  path: ^1.8.3
+  path_provider: ^2.1.2
+  # S
+  sqlite3_flutter_libs: ^0.5.18
+
+dev_dependencies:
+  # B
+  build_runner: ^2.4.7
+  # F
+  flutter_test:
+    sdk: flutter
+  # D
+  drift_dev: ^2.14.1
+  # F
+  flutter_lints: ^3.0.1
+  injectable_generator: ^2.4.1
+
+flutter:
+  uses-material-design: true
+  generate: true

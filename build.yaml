@@ -1,0 +1,37 @@
+targets:
+  $default:
+    sources:
+      include:
+        - $package$
+        - lib/$lib$
+        - lib/*.dart
+        - lib/**/*.dart
+      exclude:
+        - lib/src/injection.config.dart
+    builders:
+      injectable_generator:injectable_builder:
+        enabled: true
+        generate_for:
+          - lib/**/*_cubit.dart
+          - lib/**/*_bloc.dart
+          - lib/**/*_repository.dart
+          - lib/**/*_service.dart
+          - lib/**/*_injectable_module.dart
+          - lib/src/router.dart
+      injectable_generator:injectable_config_builder:
+        enabled: true
+        generate_for:
+          - lib/src/injection.dart
+      source_gen:combining_builder:
+        enabled: true
+        generate_for:
+          - lib/src/*.dart
+          - lib/**/models/**
+          - lib/**/*_cubit.dart
+          - lib/**/*_bloc.dart
+          - lib/**/*_repository.dart
+          - lib/**/*_service.dart
+          - lib/**/database.dart
+          - lib/**/*_table.dart
+          - lib/**/*_injectable_module.dart
+          - lib/src/injection.dart
