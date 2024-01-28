@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:my_garage/src/garage/infra/models/auto.dart';
 import 'package:my_garage/src/garage/ui/garage/garage_header_delegate.dart';
 import 'package:my_garage/src/garage/ui/garage/garage_list_tile.dart';
 import 'package:my_garage/src/garage/ui/garage_auto/garage_auto_list_tile.dart';
 import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
-import 'package:flutter/material.dart';
+
+import 'garage_empty_view.dart';
 
 class GarageView extends StatelessWidget {
   const GarageView({
@@ -13,12 +15,13 @@ class GarageView extends StatelessWidget {
     required this.onAddAuto,
   });
 
-  final List<Auto> autos;
+  final List<Auto>? autos;
   final ValueChanged<int>? onAuto;
   final VoidCallback? onAddAuto;
 
   @override
   Widget build(BuildContext context) {
+    final autos = this.autos;
     return Material(
       child: SafeArea(
         bottom: false,
@@ -55,25 +58,38 @@ class GarageView extends StatelessWidget {
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: GarageHeaderDelegate(
-                      context.t.garageMyAutoTitle,
+                      loading: autos == null,
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(context.t.garageMyAutoTitle),
                     ),
                   ),
-                  SliverList.builder(
-                    itemCount: autos.length,
-                    itemBuilder: (_, index) {
-                      final auto = autos[index];
-                      return GarageAutoListTile.short(
-                        auto: auto,
-                        onTap:
-                            onAuto != null ? () => onAuto?.call(auto.id) : null,
-                      );
-                    },
-                  ),
+                  if (autos != null && autos.isNotEmpty)
+                    SliverList.builder(
+                      itemCount: autos.length,
+                      itemBuilder: (_, index) {
+                        final auto = autos[index];
+                        return GarageAutoListTile.short(
+                          auto: auto,
+                          onTap: onAuto != null
+                              ? () => onAuto?.call(auto.id)
+                              : null,
+                        );
+                      },
+                    )
+                  else
+                    SliverToBoxAdapter(
+                      child: GarageEmptyView(
+                        padding: EdgeInsets.symmetric(
+                          vertical: context.data.size.height * 0.05,
+                          horizontal: 16.0,
+                        ),
+                        child: Text(context.t.garageMyAutoEmptyLabel),
+                      ),
+                    )
                 ],
               ),
               SliverToBoxAdapter(
-                child: SizedBox(height: context.data.padding.bottom),
+                child: SizedBox(height: context.data.padding.bottom + 16.0),
               ),
             ],
           ),

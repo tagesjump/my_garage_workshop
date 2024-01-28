@@ -1,9 +1,9 @@
-import 'package:my_garage/src/injection.dart';
-import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
-import 'package:my_garage/src/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:my_garage/src/injection.dart';
+import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
+import 'package:my_garage/src/router.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(elevation: 0),
         ),
