@@ -12,6 +12,8 @@ class Auto extends Equatable {
     this.mileage,
   });
 
+  factory Auto.empty() => const Auto(id: 0, brand: '', model: '', year: 0);
+
   final int id;
   final String brand;
   final String model;
@@ -22,6 +24,19 @@ class Auto extends Equatable {
   final int? mileage;
 
   String get name => [brand, model].join(' ');
+
+  Auto copyWith({String? brand, String? model, int? year}) {
+    return Auto(
+      id: id,
+      brand: brand ?? this.brand,
+      model: model ?? this.model,
+      year: year ?? this.year,
+      bodyNumber: bodyNumber,
+      chassisNumber: chassisNumber,
+      vin: vin,
+      mileage: mileage,
+    );
+  }
 
   @override
   List<Object?> get props =>

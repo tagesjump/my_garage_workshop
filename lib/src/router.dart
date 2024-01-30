@@ -1,10 +1,11 @@
-import 'package:my_garage/src/garage/infra/models/auto.dart';
+import 'package:flutter/foundation.dart';
+import 'package:go_router/go_router.dart';
+import 'package:injectable/injectable.dart';
 import 'package:my_garage/src/garage/ui/screens/garage_add_screen.dart';
 import 'package:my_garage/src/garage/ui/screens/garage_auto_screen.dart';
 import 'package:my_garage/src/garage/ui/screens/garage_screen.dart';
+import 'package:my_garage/src/garage/ui/screens/garage_update_screen.dart';
 import 'package:my_garage/src/internal/infra/extensions/string_x.dart';
-import 'package:go_router/go_router.dart';
-import 'package:injectable/injectable.dart';
 
 export 'package:go_router/go_router.dart';
 
@@ -12,9 +13,12 @@ part 'route_name.dart';
 
 @module
 abstract class RouterInjectableModule {
+  const RouterInjectableModule();
+
   @lazySingleton
   GoRouter router() {
     return GoRouter(
+      debugLogDiagnostics: kDebugMode,
       initialLocation: RouteName.garage.path,
       routes: [
         GoRoute(
@@ -32,8 +36,20 @@ abstract class RouterInjectableModule {
               name: RouteName.garageAuto.name,
               builder: (_, state) => GarageAutoScreen(
                 key: state.pageKey,
-                auto: state.extra as Auto,
+                id: int.parse(state.pathParameters['id']!),
               ),
+              routes: [
+                GoRoute(
+                  path: RouteName.garageUpdate.path,
+                  name: RouteName.garageUpdate.name,
+                  builder: (_, state) => GarageUpdateScreen(
+                    key: state.pageKey,
+                    mileage: int.tryParse(
+                      state.uri.queryParameters['mileage'] ?? '',
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

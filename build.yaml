@@ -17,6 +17,7 @@ targets:
           - lib/**/*_repository.dart
           - lib/**/*_service.dart
           - lib/**/*_injectable_module.dart
+          - lib/**/database.dart
           - lib/src/router.dart
       injectable_generator:injectable_config_builder:
         enabled: true

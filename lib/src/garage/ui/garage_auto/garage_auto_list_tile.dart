@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_garage/src/garage/infra/models/auto.dart';
 import 'package:my_garage/src/garage/ui/garage_auto/garage_auto_characteristic.dart';
 import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 abstract class GarageAutoListTile extends StatelessWidget {
   const GarageAutoListTile({super.key});

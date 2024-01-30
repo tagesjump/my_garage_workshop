@@ -1,7 +1,7 @@
-import 'package:my_garage/src/app.dart';
-import 'package:my_garage/src/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_garage/src/app.dart';
+import 'package:my_garage/src/injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

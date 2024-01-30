@@ -3,7 +3,8 @@ part of 'router.dart';
 enum RouteName {
   garage('/garage'),
   garageAdd('add'),
-  garageAuto('auto/:id');
+  garageAuto('auto/:id'),
+  garageUpdate('update');
 
   const RouteName(this.path);
 

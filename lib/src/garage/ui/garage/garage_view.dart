@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_garage/src/garage/infra/models/auto.dart';
+import 'package:my_garage/src/garage/ui/garage/garage_empty_view.dart';
 import 'package:my_garage/src/garage/ui/garage/garage_header_delegate.dart';
 import 'package:my_garage/src/garage/ui/garage/garage_list_tile.dart';
 import 'package:my_garage/src/garage/ui/garage_auto/garage_auto_list_tile.dart';
 import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
-
-import 'garage_empty_view.dart';
 
 class GarageView extends StatelessWidget {
   const GarageView({

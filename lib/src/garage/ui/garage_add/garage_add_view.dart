@@ -34,7 +34,10 @@ class _GarageAddViewState extends State<GarageAddView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(context.t.garageAddAppBarTitle)),
+      appBar: AppBar(
+        title: Text(context.t.garageAddAppBarTitle),
+        surfaceTintColor: Colors.transparent,
+      ),
       body: Form(
         key: _key,
         autovalidateMode: _autoValidateMode,
@@ -42,6 +45,7 @@ class _GarageAddViewState extends State<GarageAddView> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: [
             TextFormField(
+              autofocus: true,
               decoration: InputDecoration(
                 labelText: context.t.garageAddBrandLabel,
               ),
@@ -62,7 +66,10 @@ class _GarageAddViewState extends State<GarageAddView> {
                 labelText: context.t.garageAddYearLabel,
               ),
               keyboardType: TextInputType.number,
-              inputFormatters: [LengthLimitingTextInputFormatter(4)],
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(4),
+              ],
               validator: _yearValidator,
               onChanged: widget.onYearChanged,
             ),
@@ -70,7 +77,7 @@ class _GarageAddViewState extends State<GarageAddView> {
               height: context.data.padding.bottom +
                   kBottomNavigationBarHeight +
                   16.0,
-            )
+            ),
           ],
         ),
       ),

@@ -18,8 +18,8 @@
 
 ## Требования к среде разработки
 
-* [Flutter SDK](https://flutter.dev/docs/get-started/install) (3.16.7 и выше)
-* [Dart SDK](https://dart.dev/get-dart) (3.2.4 и выше)
+* [Flutter SDK](https://flutter.dev/docs/get-started/install) (3.16.9 и выше)
+* [Dart SDK](https://dart.dev/get-dart) (3.2.6 и выше)
 * [Android Studio и IntelliJ](https://docs.flutter.dev/tools/android-studio)
   или [Visual Studio Code](https://docs.flutter.dev/tools/vs-code)
 

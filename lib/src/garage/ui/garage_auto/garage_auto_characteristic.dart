@@ -1,5 +1,5 @@
-import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
 import 'package:flutter/material.dart';
+import 'package:my_garage/src/internal/infra/extensions/build_context_x.dart';
 
 class GarageAutoCharacteristic extends StatelessWidget {
   const GarageAutoCharacteristic({

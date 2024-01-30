@@ -11,4 +11,10 @@ extension BuildContextX on BuildContext {
   TextTheme get textTheme => theme.textTheme;
 
   MediaQueryData get data => MediaQuery.of(this);
+
+  void showSnackBar(String data) {
+    ScaffoldMessenger.of(this)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(data)));
+  }
 }
