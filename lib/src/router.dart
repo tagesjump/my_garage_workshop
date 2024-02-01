@@ -1,3 +1,4 @@
+import 'package:drift_db_viewer/drift_db_viewer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
@@ -5,6 +6,7 @@ import 'package:my_garage/src/garage/ui/screens/garage_add_screen.dart';
 import 'package:my_garage/src/garage/ui/screens/garage_auto_screen.dart';
 import 'package:my_garage/src/garage/ui/screens/garage_screen.dart';
 import 'package:my_garage/src/garage/ui/screens/garage_update_screen.dart';
+import 'package:my_garage/src/internal/infra/database.dart';
 import 'package:my_garage/src/internal/infra/extensions/string_x.dart';
 
 export 'package:go_router/go_router.dart';
@@ -16,7 +18,7 @@ abstract class RouterInjectableModule {
   const RouterInjectableModule();
 
   @lazySingleton
-  GoRouter router() {
+  GoRouter router(Database database) {
     return GoRouter(
       debugLogDiagnostics: kDebugMode,
       initialLocation: RouteName.garage.path,
@@ -52,6 +54,11 @@ abstract class RouterInjectableModule {
               ],
             ),
           ],
+        ),
+        GoRoute(
+          path: RouteName.easterEgg.path,
+          name: RouteName.easterEgg.name,
+          builder: (_, state) => DriftDbViewer(database),
         ),
       ],
     );

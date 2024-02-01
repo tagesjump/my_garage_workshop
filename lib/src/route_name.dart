@@ -4,7 +4,8 @@ enum RouteName {
   garage('/garage'),
   garageAdd('add'),
   garageAuto('auto/:id'),
-  garageUpdate('update');
+  garageUpdate('update'),
+  easterEgg('/easter-egg');
 
   const RouteName(this.path);
 

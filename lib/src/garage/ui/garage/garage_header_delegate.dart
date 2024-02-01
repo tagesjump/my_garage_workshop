@@ -53,5 +53,5 @@ class GarageHeaderDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => 44.0;
 
   @override
-  bool shouldRebuild(oldDelegate) => false;
+  bool shouldRebuild(oldDelegate) => true;
 }

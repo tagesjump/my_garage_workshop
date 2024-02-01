@@ -24,6 +24,8 @@
   "garageAutoVinLabel": "VIN",
   "garageAutoAbsentLabel": "отсутствует",
   "garageAutoUpdateButton": "Обновить пробег",
+  "garageAutoErrorTitle": "Произошла ошибка",
+  "garageAutoErrorRetryButton": "Повторить",
   "garageUpdateAppBarTitle": "Обновить пробег",
   "garageUpdateMileageLabel": "Пробег",
   "garageUpdateSaveButton": "Сохранить"

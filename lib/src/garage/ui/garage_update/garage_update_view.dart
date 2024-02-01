@@ -6,7 +6,7 @@ import 'package:my_garage/src/router.dart';
 class GarageUpdateView extends StatefulWidget {
   const GarageUpdateView({super.key, required this.mileage});
 
-  final int mileage;
+  final int? mileage;
 
   @override
   State<StatefulWidget> createState() => _GarageUpdateViewState();
@@ -34,7 +34,8 @@ class _GarageUpdateViewState extends State<GarageUpdateView> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: [
             TextFormField(
-              initialValue: widget.mileage.toString(),
+              initialValue:
+                  widget.mileage != null ? widget.mileage.toString() : '',
               autofocus: true,
               decoration: InputDecoration(
                 labelText: context.t.garageUpdateMileageLabel,

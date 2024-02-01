@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_garage/src/garage/infra/models/auto.dart';
 import 'package:my_garage/src/garage/ui/garage/garage_empty_view.dart';
@@ -12,11 +13,13 @@ class GarageView extends StatelessWidget {
     required this.autos,
     required this.onAuto,
     required this.onAddAuto,
+    required this.onEasterEgg,
   });
 
   final List<Auto>? autos;
   final ValueChanged<int>? onAuto;
   final VoidCallback? onAddAuto;
+  final VoidCallback? onEasterEgg;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,10 @@ class GarageView extends StatelessWidget {
             return [
               SliverAppBar(
                 expandedHeight: appBarHeight + 166.0,
-                title: Text(context.t.garageAppBarTitle),
+                title: GestureDetector(
+                  onDoubleTap: kDebugMode ? onEasterEgg : null,
+                  child: Text(context.t.garageAppBarTitle),
+                ),
                 flexibleSpace: FlexibleSpaceBar(
                   collapseMode: CollapseMode.parallax,
                   background: Column(

@@ -16,6 +16,7 @@ class GarageScreen extends StatelessWidget {
         pathParameters: {'id': id.toString()},
       ),
       onAddAuto: () => context.pushNamed(RouteName.garageAdd.name),
+      onEasterEgg: () => context.pushNamed(RouteName.easterEgg.name),
     );
   }
 }
