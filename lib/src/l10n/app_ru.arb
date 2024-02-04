@@ -23,10 +23,16 @@
   "garageAutoChassisNumberLabel": "Номер шасси",
   "garageAutoVinLabel": "VIN",
   "garageAutoAbsentLabel": "отсутствует",
-  "garageAutoUpdateButton": "Обновить пробег",
+  "garageAutoUpdateButton": "Обновить данные",
   "garageAutoErrorTitle": "Произошла ошибка",
   "garageAutoErrorRetryButton": "Повторить",
-  "garageUpdateAppBarTitle": "Обновить пробег",
+  "garageAutoMileageTitle": "История пробега",
+  "garageAutoMileageEmptyLabel": "Нет истории",
+  "garageAutoMileageCreatedAtLabel": "{date} в {time}",
+  "garageUpdateAppBarTitle": "Обновить данные",
   "garageUpdateMileageLabel": "Пробег",
+  "garageUpdateBodyNumberLabel": "Номер кузова",
+  "garageUpdateChassisNumberLabel": "Номер шасси",
+  "garageUpdateVinLabel": "VIN",
   "garageUpdateSaveButton": "Сохранить"
 }

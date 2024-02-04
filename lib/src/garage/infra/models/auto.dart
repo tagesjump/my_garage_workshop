@@ -27,16 +27,24 @@ class Auto extends Equatable implements Insertable<Auto> {
 
   String get name => [brand, model].join(' ');
 
-  Auto copyWith({String? brand, String? model, int? year}) {
+  Auto copyWith({
+    String? brand,
+    String? model,
+    int? year,
+    String? bodyNumber,
+    String? chassisNumber,
+    String? vin,
+    int? mileage,
+  }) {
     return Auto(
       id: id,
       brand: brand ?? this.brand,
       model: model ?? this.model,
       year: year ?? this.year,
-      bodyNumber: bodyNumber,
-      chassisNumber: chassisNumber,
-      vin: vin,
-      mileage: mileage,
+      bodyNumber: bodyNumber ?? this.bodyNumber,
+      chassisNumber: chassisNumber ?? this.chassisNumber,
+      vin: vin ?? this.vin,
+      mileage: mileage ?? this.mileage,
     );
   }
 

@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_garage/src/garage/infra/models/auto.dart';
+import 'package:my_garage/src/garage/infra/models/auto_mileage.dart';
 import 'package:my_garage/src/garage/ui/garage_auto/garage_auto_error_view.dart';
 import 'package:my_garage/src/garage/ui/garage_auto/garage_auto_view.dart';
 import 'package:my_garage/src/garage/use_cases/garage_auto/garage_auto_cubit.dart';
@@ -39,17 +43,35 @@ class GarageAutoScreen extends StatelessWidget {
     if (state is GarageAutoInitial) {
       return GarageAutoView(
         auto: state.auto,
+        // TODO(DanilAbdrafikov): Implement mileage history
+        mileage: List.generate(
+          15,
+          (index) => AutoMileage(
+            id: index,
+            autoId: id,
+            value: Random().nextInt(100000),
+            createdAt: DateTime.now().subtract(Duration(days: index)),
+          ),
+        ),
         onDelete: context.garageAuto.deleted,
         onUpdate: () async {
-          final mileage = await context.pushNamed<int?>(
+          final auto = await context.pushNamed<Auto?>(
             RouteName.garageUpdate.name,
             pathParameters: {'id': state.auto.id.toString()},
             queryParameters: <String, String?>{
+              'body_number': state.auto.bodyNumber,
+              'chassis_number': state.auto.chassisNumber,
+              'vin': state.auto.vin,
               'mileage': state.auto.mileage?.toString(),
             },
           );
-          if (!context.mounted) return;
-          return context.garageAuto.updated(mileage);
+          if (!context.mounted || auto == null) return;
+          return context.garageAuto.updated(
+            bodyNumber: auto.bodyNumber,
+            chassisNumber: auto.chassisNumber,
+            vin: auto.vin,
+            mileage: auto.mileage,
+          );
         },
       );
     } else if (state is GarageAutoFailure) {
@@ -58,6 +80,11 @@ class GarageAutoScreen extends StatelessWidget {
         onRetry: () => context.garageAuto.started(id),
       );
     }
-    return const GarageAutoView(auto: null, onDelete: null, onUpdate: null);
+    return const GarageAutoView(
+      auto: null,
+      mileage: null,
+      onDelete: null,
+      onUpdate: null,
+    );
   }
 }

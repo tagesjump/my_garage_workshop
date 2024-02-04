@@ -42,9 +42,15 @@ class GarageAutoCubit extends Cubit<GarageAutoState> {
     }
   }
 
-  void updated(int? mileage) async {
+  // TODO(DanilAbdrafikov): Update body number, chassis number, vin fields
+  void updated({
+    required String? bodyNumber,
+    required String? chassisNumber,
+    required String? vin,
+    required int? mileage,
+  }) async {
     final state = this.state;
-    if (mileage == null || state is! GarageAutoInitial) return;
+    if (state is! GarageAutoInitial) return;
 
     try {
       emit(const GarageAutoInProgress());
