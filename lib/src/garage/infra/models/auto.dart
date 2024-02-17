@@ -1,6 +1,8 @@
+import 'package:drift/drift.dart';
 import 'package:equatable/equatable.dart';
+import 'package:my_garage/src/internal/infra/database.dart';
 
-class Auto extends Equatable {
+class Auto extends Equatable implements Insertable<Auto> {
   const Auto({
     required this.id,
     required this.brand,
@@ -41,4 +43,17 @@ class Auto extends Equatable {
   @override
   List<Object?> get props =>
       [id, brand, model, year, bodyNumber, chassisNumber, vin, mileage];
+
+  @override
+  Map<String, Expression<Object>> toColumns(bool nullToAbsent) {
+    return AutoTableCompanion.insert(
+      brand: brand,
+      model: model,
+      year: year,
+      bodyNumber: Value(bodyNumber),
+      chassisNumber: Value(chassisNumber),
+      vin: Value(vin),
+      mileage: Value(mileage),
+    ).toColumns(nullToAbsent);
+  }
 }
