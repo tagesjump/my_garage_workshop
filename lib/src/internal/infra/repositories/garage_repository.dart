@@ -2,12 +2,13 @@ import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_garage/src/garage/infra/models/auto.dart';
 import 'package:my_garage/src/internal/infra/database.dart';
+import 'package:my_garage/src/internal/infra/tables/auto_mileage_table.dart';
 import 'package:my_garage/src/internal/infra/tables/auto_table.dart';
 
 part 'garage_repository.g.dart';
 
 @lazySingleton
-@DriftAccessor(tables: [AutoTable])
+@DriftAccessor(tables: [AutoTable, AutoMileageTable])
 class GarageRepository extends DatabaseAccessor<Database>
     with _$GarageRepositoryMixin {
   GarageRepository(super.db);
