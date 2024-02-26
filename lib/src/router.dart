@@ -46,6 +46,9 @@ abstract class RouterInjectableModule {
                   name: RouteName.garageUpdate.name,
                   builder: (_, state) => GarageUpdateScreen(
                     key: state.pageKey,
+                    bodyNumber: state.uri.queryParameters['body_number'],
+                    chassisNumber: state.uri.queryParameters['chassis_number'],
+                    vin: state.uri.queryParameters['vin'],
                     mileage: int.tryParse(
                       state.uri.queryParameters['mileage'] ?? '',
                     ),

@@ -40,6 +40,9 @@ devtools_options.yaml
 *.pbjson.dart
 *.config.dart
 
+# Drift
+lib/src/internal/infra/schemes
+
 # Symbolication related
 app.*.symbols
 

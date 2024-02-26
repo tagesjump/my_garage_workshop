@@ -40,6 +40,7 @@ flutter pub get
 
 ```shell
 dart run build_runner build --delete-conflicting-outputs
+dart run drift_dev schema generate drift_schemas/ ./lib/src/internal/infra/schemes --data-classes --companions
 ```
 
 ### Проблемы с кодогенерацией?
