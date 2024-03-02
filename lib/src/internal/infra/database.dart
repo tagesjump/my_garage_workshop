@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:drift_dev/api/migrations.dart';
 import 'package:flutter/foundation.dart';
@@ -24,7 +25,7 @@ class Database extends _$Database {
   @override
   int get schemaVersion => schema;
 
-  static int get schema => 2;
+  static int get schema => 3;
 
   @override
   MigrationStrategy get migration {
@@ -41,7 +42,14 @@ class Database extends _$Database {
           if (target == 2) {
             await m.createTable(v2.AutoMileage(this));
           } else if (target == 3) {
-            // TODO(DanilAbdrafikov): Implement migration for next target
+            // TODO(DanilAbdrafikov): Implement migration for next target(done)
+            await m.alterTable(
+                TableMigration(autoMileageTable, columnTransformer: {
+              autoMileageTable.id: const CustomExpression('id'),
+              autoMileageTable.autoId: const CustomExpression('auto_id'),
+              autoMileageTable.value: const CustomExpression('value'),
+              autoMileageTable.createdAt: const CustomExpression('created_at'),
+            }));
           }
         }
       },

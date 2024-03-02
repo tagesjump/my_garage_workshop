@@ -12,12 +12,13 @@ class GarageAutoInProgress extends GarageAutoState {
 }
 
 class GarageAutoInitial extends GarageAutoState {
-  const GarageAutoInitial(this.auto);
+  const GarageAutoInitial(this.auto, this.mileageHistory );
 
   final Auto auto;
+  final List<AutoMileage> mileageHistory;
 
   @override
-  List<Object> get props => [auto];
+  List<Object> get props => [auto, mileageHistory];
 }
 
 class GarageAutoFailure extends GarageAutoState {

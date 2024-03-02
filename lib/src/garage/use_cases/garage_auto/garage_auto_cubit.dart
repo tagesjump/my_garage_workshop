@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:my_garage/src/garage/infra/models/auto.dart';
 import 'package:my_garage/src/internal/infra/repositories/garage_repository.dart';
+import 'package:my_garage/src/garage/infra/models/auto_mileage.dart';
 
 part 'garage_auto_state.dart';
 
@@ -19,7 +20,9 @@ class GarageAutoCubit extends Cubit<GarageAutoState> {
       final auto = await _repository.getAutoById(id);
       if (isClosed) return;
       if (auto == null) return emit(const GarageAutoSuccess());
-      emit(GarageAutoInitial(auto));
+      emit(GarageAutoInitial(auto, List.empty()));
+      _repository.watchMileagesForAuto(id).listen(
+          (mileageHistory) => emit(GarageAutoInitial(auto, mileageHistory)));
     } catch (e) {
       if (isClosed) return;
       emit(GarageAutoFailure(e));
@@ -33,6 +36,7 @@ class GarageAutoCubit extends Cubit<GarageAutoState> {
     try {
       emit(const GarageAutoInProgress());
       await _repository.deleteAutoById(state.auto.id);
+      await _repository.deleteMileagesByAutoId(state.auto.id);
       if (isClosed) return;
       emit(const GarageAutoSuccess());
     } catch (e) {
@@ -42,7 +46,7 @@ class GarageAutoCubit extends Cubit<GarageAutoState> {
     }
   }
 
-  // TODO(DanilAbdrafikov): Update body number, chassis number, vin fields
+  // TODO(DanilAbdrafikov): Update body number, chassis number, vin fields (Done)
   void updated({
     required String? bodyNumber,
     required String? chassisNumber,
@@ -54,7 +58,19 @@ class GarageAutoCubit extends Cubit<GarageAutoState> {
 
     try {
       emit(const GarageAutoInProgress());
-      await _repository.updateAutoById(state.auto.id, mileage: mileage);
+      await _repository.updateAutoById(
+        state.auto.id,
+        bodyNumber: bodyNumber,
+        chassisNumber: chassisNumber,
+        vin: vin,
+        mileage: mileage,
+      );
+      await _repository.insertMileage(
+          AutoMileage.empty().copyWith(
+            autoId: state.auto.id,
+            value: mileage,
+          )
+      );
       if (isClosed) return;
       return started(state.auto.id);
     } catch (e) {

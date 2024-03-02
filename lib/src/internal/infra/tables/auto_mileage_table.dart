@@ -10,7 +10,7 @@ class AutoMileageTable extends Table {
   String get tableName => 'auto_mileage';
 
   @override
-  Set<Column> get primaryKey => {id, autoId};
+  Set<Column> get primaryKey => {id};
 
   IntColumn get id => integer()();
 
@@ -19,6 +19,5 @@ class AutoMileageTable extends Table {
 
   IntColumn get value => integer()();
 
-  DateTimeColumn get createdAt =>
-      dateTime().withDefault(Constant(DateTime.now()))();
+  DateTimeColumn get createdAt => dateTime()();
 }

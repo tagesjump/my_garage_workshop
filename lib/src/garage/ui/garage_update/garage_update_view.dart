@@ -50,7 +50,7 @@ class _GarageUpdateViewState extends State<GarageUpdateView> {
               ],
               keyboardType: TextInputType.number,
               onSaved: (mileage) =>
-                  _auto = _auto.copyWith(mileage: int.tryParse(mileage ?? '')),
+                  _auto = _auto.copyWith(mileage: int.tryParse(mileage ?? '')), // TODO: Add mileage validation
             ),
             const SizedBox(height: 16.0),
             TextFormField(
